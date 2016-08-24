@@ -1,5 +1,6 @@
 
 # python native module
+import os
 import sys
 import json
 import time
@@ -34,7 +35,10 @@ class IndexHandler(Resource):
         for key in list(message.keys()):
             print('key: %s , value: %s' % (key, message[key]))
 
-        print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        # Create message folder
+        if not os.path.exists("message"):
+            os.mkdir("message")
+
         with open('message/message.txt', 'a') as file:
             file.write('time: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n')
             file.write('name: ' + message['name'] + '\n')
