@@ -23,7 +23,7 @@ $(document).ready(function () {
                 },
                 error: function (error) {
                     console.log(error)
-                    $("#responsefield").text("Error to load api");
+                    $("#responsefield").text("抱歉! server出了點問題QQ");
                 }
             });
         event.preventDefault();
