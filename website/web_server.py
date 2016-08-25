@@ -59,7 +59,7 @@ class CoursesHandler(Resource):
 class PythonForBeginnersHandler(Resource):
     def get(self):
         headers = {'Content-Type': 'text/html'}
-        return make_response(render_template('python_for_beginners.html'),200,headers)
+        return make_response(render_template('python-for-beginners.html'),200,headers)
 
 class QAHandler(Resource):
     def get(self):
@@ -73,7 +73,7 @@ def not_found(error):
 
 api.add_resource(IndexHandler, '/', '/index')
 api.add_resource(CoursesHandler, '/courses')
-api.add_resource(PythonForBeginnersHandler, '/courses/python_for_beginners')
+api.add_resource(PythonForBeginnersHandler, '/courses/python-for-beginners')
 api.add_resource(QAHandler, '/qa')
 
 if __name__ == '__main__':
