@@ -1,4 +1,3 @@
-
 # python native module
 import os
 import sys
@@ -6,6 +5,7 @@ import json
 import time
 from datetime import datetime
 import argparse
+import socket
 
 # flask module
 from flask import Flask, request, render_template, make_response, jsonify
@@ -21,9 +21,16 @@ def main():
     args = parser.parse_args()
     port = args.p 
     print("Server starting......")
-    app.run(port=port, debug=True)
-    #app.run('140.112.42.151', port=port, debug=True)
-
+    
+    server_name = socket.getfqdn(socket.gethostname()) 
+    server_ip = socket.gethostbyname(server_name)
+    print (server_name, server_ip)
+    
+    if server_name == 'pttclustering-virtual-machine':
+        app.run('140.112.42.151', port=port, debug=True)
+    else:
+        app.run(port=port, debug=True)
+    
 class IndexHandler(Resource):
     def get(self):
         headers = {'Content-Type': 'text/html'}
