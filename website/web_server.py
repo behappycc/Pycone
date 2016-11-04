@@ -1,15 +1,13 @@
 # python native module
 import os
-import sys
 import json
 import time
-from datetime import datetime
 import argparse
 import socket
 
 # flask module
 from flask import Flask, request, render_template, make_response, jsonify
-from flask_restful import Resource, Api, reqparse
+from flask_restful import Resource, Api
 
 app = Flask(__name__)
 api = Api(app)
@@ -19,22 +17,22 @@ def main():
     parser = argparse.ArgumentParser(description='Pycone Server')
     parser.add_argument('-p', type=int, help='listening port for Pycone Server')
     args = parser.parse_args()
-    port = args.p 
+    port = args.p
     print("Server starting......")
-    
-    server_name = socket.getfqdn(socket.gethostname()) 
+    server_name = socket.getfqdn(socket.gethostname())
     server_ip = socket.gethostbyname(server_name)
     print (server_name, server_ip)
-    
+
     if server_name == 'pttclustering-virtual-machine':
-        app.run('140.112.42.151', port=port, debug=True)
+        app.run('140.112.42.151', port=port, debug=False)
     else:
         app.run(port=port, debug=True)
-    
+
+
 class IndexHandler(Resource):
     def get(self):
         headers = {'Content-Type': 'text/html'}
-        return make_response(render_template('index.html'),200,headers)
+        return make_response(render_template('index.html'), 200, headers)
 
     def post(self):
         message = json.loads(request.get_data(as_text=True))
@@ -56,22 +54,50 @@ class IndexHandler(Resource):
         response_to_send = {}
         response_to_send['response'] = "謝謝您的來信!"
         print(response_to_send)
-        return json.dumps(response_to_send);
+        return json.dumps(response_to_send)
+
 
 class CoursesHandler(Resource):
     def get(self):
         headers = {'Content-Type': 'text/html'}
-        return make_response(render_template('courses.html'),200,headers)
+        return make_response(render_template('courses.html'), 200, headers)
+
+
+class BlogsHandler(Resource):
+    def get(self):
+        headers = {'Content-Type': 'text/html'}
+        return make_response(render_template('blogs.html'), 200, headers)
+
 
 class PythonForBeginnersHandler(Resource):
     def get(self):
         headers = {'Content-Type': 'text/html'}
-        return make_response(render_template('python-for-beginners.html'),200,headers)
+        return make_response(render_template('python-for-beginners.html'), 200, headers)
+
 
 class QAHandler(Resource):
     def get(self):
         headers = {'Content-Type': 'text/html'}
-        return make_response(render_template('qa.html'),200,headers)
+        return make_response(render_template('qa.html'), 200, headers)
+
+
+class WinPyEnvHandler(Resource):
+    def get(self):
+        headers = {'Content-Type': 'text/html'}
+        return make_response(render_template('win-python-environment.html'), 200, headers)
+
+
+class MacPyEnvHandler(Resource):
+    def get(self):
+        headers = {'Content-Type': 'text/html'}
+        return make_response(render_template('mac-python-environment.html'), 200, headers)
+
+
+class LinuxPyEnvHandler(Resource):
+    def get(self):
+        headers = {'Content-Type': 'text/html'}
+        return make_response(render_template('linux-python-environment.html'), 200, headers)
+
 
 @app.errorhandler(404)
 def not_found(error):
@@ -80,8 +106,12 @@ def not_found(error):
 
 api.add_resource(IndexHandler, '/', '/index')
 api.add_resource(CoursesHandler, '/courses')
-api.add_resource(PythonForBeginnersHandler, '/courses/python-for-beginners')
+api.add_resource(BlogsHandler, '/blogs')
 api.add_resource(QAHandler, '/qa')
+api.add_resource(PythonForBeginnersHandler, '/courses/python-for-beginners')
+api.add_resource(WinPyEnvHandler, '/blogs/win-python-environment')
+api.add_resource(MacPyEnvHandler, '/blogs/mac-python-environment')
+api.add_resource(LinuxPyEnvHandler, '/blogs/linux-python-environment')
 
 if __name__ == '__main__':
     main()

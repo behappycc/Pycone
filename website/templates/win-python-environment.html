@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Pycone松果城市</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    
+    <meta name="description" content="Pycone提供最完整的pyhton線上課程">
+    <meta name="keywords" content="Pycone,pycone,松果城市,松果程式,python課程,python教學,python blog,程式教學,線上教學,線上課程,django,網站後台,機器學習,網頁爬蟲,自然語言處理,資料分析,資料科學">
+    <meta name="author" content="Hubert">
+
+    <!-- Open graph markup --> 
+    <meta property="og:url" content="http://www.pycone.com/courses/python-for-beginners" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title"  content="最有趣的Python線上課程" />
+    <meta property="og:description" content="初心者 - python入門" />
+    <meta property="og:image" content="http://www.pycone.com/static/images/python-for-beginners.png" />
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="shortcut icon" href="../static/images/favicon.ico" />
+
+    <!-- CSS Files -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/css/material-kit.css" rel="stylesheet"/>
+
+</head>
+
+<body class="blog-post">
+	<nav class="navbar navbar-danger navbar-transparent navbar-absolute">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index">Pycone松果城市</a>
+            </div>
+            <!-- material-icons https://design.google.com/icons/#ic_android -->
+            <div class="collapse navbar-collapse" id="navigation-example">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/courses">
+                            <i class="material-icons">assignment</i> 課程
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/blogs">
+                            <i class="material-icons">pets</i>
+                            部落格
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/qa">
+                            <i class="material-icons">question_answer</i>
+                            問與答
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+	<div class="page-header header-filter" data-parallax="active" style="background-image: url('../static/images/165HH.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <h1 class="title">最有趣的Python線上課程</h1>
+                    <h4>一起來學習Python吧!</h4>
+                    <a href="https://hahow.in/cr/python-for-beginners" target="_blank" class="btn btn-info btn-raised btn-lg">
+                        <i class="fa fa-rocket"></i> 立即加入課程!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="main main-raised">
+		<div class="container">
+            <div class="section section-text">
+                <div class="row">
+    				<div class="col-md-8 col-md-offset-2">
+        				<h3 class="title">在Mac環境下安裝Python與Sublime Text3</h3>
+    					<p>這篇文章會教大家如何在你的Mac上面安裝執行Python的環境與寫程式的環境，分別會安裝Python3.5與Sublime Text3
+						<br/><br/>
+						今天要介紹的是Python開發環境的安裝，不過既然提到了Python的安裝，那麼就會牽扯到一個討論已久的問題，那就是Python2跟Python3到底應該怎麼選呢，我在這邊幫大家分析一下，首先，Python2.7是Python2的最後一個版本，且預計僅支援到2020年，也就是Python2已經不會推出新的版本了，而且甚至到了2020年之後就不會在維護了，有鑑於此，很多原本只支援Python2的程式庫或框架都在不斷的往Python3遷移，使得Python3也有越來越多的第三方支援了，而且Python3的更新也十分穩定，以平均每隔一年左右的時間推出一個3.x版本，像是現在已經推出到了3.5版，因此，我們接下來的將會以Python3.5來做示範
+						<br/><br/>
+						好的，那麼我們接下來進行Python的安裝，在Chrome上面搜尋Python之後，可以查到Python Releases for Mac OS X，可以看到他有Python3.5.2版本跟Python2.7.12版本的選擇，那麼Python2跟Python3的比較剛剛已經提過了，所以我們直接開始下載3.5版本
+						</p>
+
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/1.png">
+						</div>
+					</div>
+
+					<div class="col-md-8 col-md-offset-2">
+						<p>下載完成之後直接點擊，因為是Mac的關係，在安裝上都是十分簡單的，不停的繼續，就可以了，看到這個已成功安裝的字樣那就是Python安裝成功了</p>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/2.png">
+						</div>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/3.png">
+						</div>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/4.png">
+						</div>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/5.png">
+						</div>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/6.png">
+						</div>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/7.png">
+						</div>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/8.png">
+						</div>
+					</div>
+
+					<div class="col-md-8 col-md-offset-2">
+						<p>利用REPL來寫第一個Python的程式吧，首先打開Mac的terminal</p>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/9.png">
+						</div>
+					</div>
+
+					<div class="col-md-8 col-md-offset-2">
+						<p>並在terminal輸入Python3, 這模式也被稱為Python shell，是一個Python的互動式介面，每輸入一行簡單的Python程式碼，它就會幫你進行運算並顯示結果給你</p>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/10.png">
+						</div>
+					</div>
+
+					<div class="col-md-8 col-md-offset-2">
+						<p>我們先從簡單的1+1開始吧，顯示結果為2，而如果你在REPL中犯錯了，REPL會有提示的訊息，練習看這些錯誤訊息是訓練寫程式的能力一個很重要的一環，接下來我們來介紹help()函式，輸入help()之後可以進入到說明模式，在這裡可以查詢一些文件跟資料，比如說你想知道python有哪些keywords，你可以輸入keywords，它就會把python裡面有定義的關鍵字都列出來，又比如你想知道剛剛使用的print()函式的定義，這裡一樣可以看到，而離開這個模式的方法是輸入quit，來返回到REPL的模式，而離開REPL模式的方法則是輸入quit()，多了一對括號要特別注意，以上就是REPL模式的一些簡單操作示範</p>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/11.png">
+						</div>
+					</div>
+
+					<div class="col-md-8 col-md-offset-2">
+						<p>你們會不會覺得REPL模式不好用呢，每一行都要運行一次，那如果想要一次打好幾行再執行的話，或者是比較複雜的結構該怎麼辦，這時候就是一款好的編輯器登場的時候了，在這裡為大家推薦一款編輯器，Sublime text3，直接google sublime就可以看到了，而安裝的部分我就不細講了，直接一直下一步就好，Sublime text3可以幫你處理Python要求的縮排問題，也可以幫你檢查你的語法是否有錯，它也可以幫你自動補完剩下的字，或者是幫助你知道有那些函式可以使用，另外，Sublime的背景是黑色的，長時間寫程式的話對眼睛的負擔也比較小</p>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/12.png">
+						</div>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/13.png">
+						</div>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/14.png">
+						</div>
+					</div>
+
+					<div class="col-md-8 col-md-offset-2">
+						<p>教大家一個好用的小技巧，就是開啟側邊欄，開啟之後我就可以把一個資料夾給拉進去，就可以很輕易地看到整個資料夾的結構，要打開其中的檔案也會十分的容易</p>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/15.png">
+						</div>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/16.png">
+						</div>
+					</div>
+
+					<div class="col-md-8 col-md-offset-2">
+						<p>另外，現在大家電腦的螢幕都越來越大，一次只顯示一個檔案的話有點太浪費了，在這邊教大家如何開啟Sublime裡面的雙Column，按下View裡面的Layout就可以調整Column的數量，兩個Column的話是比較適合的一個開發環境，一個用來放自己主要編輯的檔案，另外一個則可以用來放需要參考的檔案</p>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/17.png">
+						</div>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/18.png">
+						</div>
+					</div>
+
+					<div class="col-md-8 col-md-offset-2">
+						<p>接著我們來做一些其他的設定，按下Preferences裡面的setting，這裡面有很多的設定可以調整，像是字體的大小、要不要顯示行數、一個tab是幾個空白等等，如果我們想要調整字體大小的話，可以複製一下旁邊的font_size，並且將其值改為你習慣的字體大小，來讓自己寫程式的過程更為舒適，另外，我們還需要將translate_tabs_to_spaces設定為true，這也是為了更好的符合Python要求的縮排規則，修改好之後要記得存檔，你可以看到檔按上面的小圓點的話，就表示這個檔案有變更但是還沒有存檔，按下Ctrl+s存檔之後小圓點就會不見了</p>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/19.png">
+						</div>
+					</div>
+
+					<div class="col-md-8 col-md-offset-2">
+						<p>Sublime在安裝完之後，一定是要安裝超級好用的Package Control套件，Sublime裡面有一套它的套件管理系統，點選Tools -> Install Package Control，安裝完成之後你可以在Preferences裡面看到Package Control的話那就表示你安裝成功了，之後如果你想要安裝什麼套件的話都可以透過其中的Install Package來安裝</p>
+					</div>
+
+					<div class="section col-md-10 col-md-offset-1">
+						<div class="col-md-12">
+							<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/mac-python-environment/20.png">
+						</div>
+					</div>
+
+					<div class="col-md-8 col-md-offset-2">
+						<p>
+							這篇文章教大家如何在你的Mac上面安裝執行Python的環境與寫程式的環境，分別會安裝Python3.5與Sublime Text3，當環境都安裝好後，就可以開始來寫Python囉!
+						</p>
+						<blockquote>
+							<p>
+								“Happy coding”
+							</p>
+						</blockquote>
+    				</div>			
+				</div>
+			</div>
+
+			<div class="section section-blog-info">
+                <div class="row">
+					<div class="col-md-8 col-md-offset-2">
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="blog-tags">
+									Tags:
+									<span class="label label-primary">Python</span>
+									<span class="label label-primary">Sublime</span>
+									<span class="label label-primary">Mac</span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<a href="#pablo" class="btn btn-facebook btn-round pull-right">
+									<i class="fa fa-facebook-square"></i>
+								</a>
+							</div>
+						</div>
+
+						<hr/>
+
+					</div>
+    			</div>
+            </div>
+        </div>
+    </div>
+
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="title text-center">其他文章</h2>
+					<br />
+					<div class="row">
+						<div class="col-md-4">
+							<div class="card card-blog">
+								<div class="card-image">
+									<a href="#pablo">
+										<img class="img img-raised" src="../static/images/python-for-beginners.png" />
+									</a>
+								</div>
+
+								<div class="content">
+									<h6 class="category text-info">開發環境設定</h6>
+									<h4 class="card-title">
+										<a href="#pablo">Windows使用者</a>
+									</h4>
+									<p class="card-description">
+										在Windows環境下安裝Python與Sublime Text3<a href="/blogs/win-python-environment"> <br/>Read More </a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="card card-blog">
+								<div class="card-image">
+									<a href="#pablo">
+										<img class="img img-raised" src="../static/images/python-for-beginners.png" />
+									</a>
+								</div>
+								<div class="content">
+									<h6 class="category text-success">
+										開發環境設定
+									</h6>
+									<h4 class="card-title">
+										<a href="#pablo">Linux使用者</a>
+									</h4>
+									<p class="card-description">
+										在Linux環境下安裝Python與Sublime Text3<a href="/blogs/linux-python-environment"> <br/>Read More </a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer">
+        <div class="container">
+            <nav class="pull-left">
+                <ul>
+                    <li>
+                        <a href="">
+                            Pycone
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            關於我們
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright pull-right">
+                &copy; <script>document.write(new Date().getFullYear())</script> Pycone
+            </div>
+        </div>
+    </footer>
+
+	<!--   Core JS Files   -->
+    <script src="../static/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../static/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../static/js/material.min.js"></script>
+
+    <!--    Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="../static/js/nouislider.min.js" type="text/javascript"></script>
+
+    <!--    Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+    <script src="../static/js/bootstrap-datepicker.js" type="text/javascript"></script>
+
+    <!--    Plugin for Select Form control, full documentation here: https://github.com/FezVrasta/dropdown.js -->
+    <script src="../static/js/jquery.dropdown.js" type="text/javascript"></script>
+
+    <!--    Plugin for Tags, full documentation here: http://xoxco.com/projects/code/tagsinput/  -->
+    <script src="../static/js/jquery.tagsinput.js"></script>
+
+    <!--    Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+    <script src="../static/js/jasny-bootstrap.min.js"></script>
+
+    <!-- Plugin For Google Maps -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+    <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+    <script src="../static/js/material-kit.js" type="text/javascript"></script>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-83054846-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+</body>
+</html>
