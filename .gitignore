@@ -90,3 +90,7 @@ ENV/
 
 # message
 website/message
+
+# Server script
+run_server.py
+shutdown_server.py
