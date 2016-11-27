@@ -99,6 +99,12 @@ class LinuxPyEnvHandler(Resource):
         return make_response(render_template('linux-python-environment.html'), 200, headers)
 
 
+class SearchConsoleHandler(Resource):
+    def get(self):
+        headers = {'Content-Type': 'text/html'}
+        return make_response(render_template('google3f35aa78aae73436.html'), 200, headers)
+
+
 @app.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
@@ -108,6 +114,7 @@ api.add_resource(IndexHandler, '/', '/index')
 api.add_resource(CoursesHandler, '/courses')
 api.add_resource(BlogsHandler, '/blogs')
 api.add_resource(QAHandler, '/qa')
+api.add_resource(SearchConsoleHandler, '/google3f35aa78aae73436.html')
 api.add_resource(PythonForBeginnersHandler, '/courses/python-for-beginners')
 api.add_resource(WinPyEnvHandler, '/blogs/win-python-environment')
 api.add_resource(MacPyEnvHandler, '/blogs/mac-python-environment')
