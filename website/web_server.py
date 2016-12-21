@@ -99,6 +99,12 @@ class LinuxPyEnvHandler(Resource):
         return make_response(render_template('linux-python-environment.html'), 200, headers)
 
 
+class SublimeAnacondaHandler(Resource):
+    def get(self):
+        headers = {'Content-Type': 'text/html'}
+        return make_response(render_template('sublime-anaconda.html'), 200, headers)
+
+
 class SearchConsoleHandler(Resource):
     def get(self):
         headers = {'Content-Type': 'text/html'}
@@ -119,6 +125,7 @@ api.add_resource(PythonForBeginnersHandler, '/courses/python-for-beginners')
 api.add_resource(WinPyEnvHandler, '/blogs/win-python-environment')
 api.add_resource(MacPyEnvHandler, '/blogs/mac-python-environment')
 api.add_resource(LinuxPyEnvHandler, '/blogs/linux-python-environment')
+api.add_resource(SublimeAnacondaHandler, '/blogs/sublime-anaconda')
 
 if __name__ == '__main__':
     main()
