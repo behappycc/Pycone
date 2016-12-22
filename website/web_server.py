@@ -104,6 +104,11 @@ class SublimeAnacondaHandler(Resource):
         headers = {'Content-Type': 'text/html'}
         return make_response(render_template('sublime-anaconda.html'), 200, headers)
 
+class PythonDataScienceTutorial1Handler(Resource):
+    def get(self):
+        headers = {'Content-Type': 'text/html'}
+        return make_response(render_template('python-data-science-tutorial-1.html'), 200, headers)       
+
 
 class SearchConsoleHandler(Resource):
     def get(self):
@@ -126,6 +131,7 @@ api.add_resource(WinPyEnvHandler, '/blogs/win-python-environment')
 api.add_resource(MacPyEnvHandler, '/blogs/mac-python-environment')
 api.add_resource(LinuxPyEnvHandler, '/blogs/linux-python-environment')
 api.add_resource(SublimeAnacondaHandler, '/blogs/sublime-anaconda')
+api.add_resource(PythonDataScienceTutorial1Handler, '/blogs/python-data-science-tutorial-1')
 
 if __name__ == '__main__':
     main()
