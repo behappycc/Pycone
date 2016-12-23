@@ -88,48 +88,49 @@
             <div class="section section-text">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h2 class="title">給初學者的 Python 網頁爬蟲與資料分析 (1) 前言</h2>
-                        <h3>前言</h3>
-                        <p>這系列文章是給初學者的網頁爬蟲與資料分析教學，如果你對於 Python 有粗淺認識 (知道 Python 的資料型態, 控制結構, 寫過一些小程式), 想進一步知道要怎麼使用 Python 擷取網頁資訊並簡單做些資料分析 (如圖表、統計資料、相關性等)，這系列文章可以帶你入門。一般想要寫網頁爬蟲的人，不會只想要擷取資料，他們真正想要的通常是資料分析，找出資料能提供的資訊，或使用資料驗證自己的假設，Python 也有許多資料處理與展示的好用套件可以使用 (如 NumPy, scikit-learn, pandas)，這系列文章會先略過這些套件，教你直接用程式計算統計資料與畫圖，以便讓你更了解套件底層的邏輯，之後學習這些套件時會更容易上手。
-                        <br/><br/>
-                        <h3>步驟拆解</h3>
-                        <p>網頁爬蟲與資料分析可以分成以下步驟:</p>
-                        <ol>
-                            <li>資料來源: 資料來源可以是別人整理好的資料(如政府 open data, 整理好的 csv 或 json 等文字檔), 也可以是自行從公開網頁擷取的資料 (本文會使用 PTT 網站作為範例)</li>
-                            <li>啟動爬蟲: 如果資料不是整理好的，而是必須從公開網頁爬取，就必須利用程式與網站 server 連線取得網頁資訊 (本文會示範用 request 套件與 PTT 網站溝通)</li>
-                            <li>資料擷取與資料淨化: 從公開網頁爬取的整個頁面，通常只有一部分是你需要的，因此要利用程式解構網頁架構，取得所需資料 (本文使用 BeautifulSoup 套件解構網頁文件，擷取所需資料); 另外，在擷取過程中或擷取後，資料通常會有些雜訊 (例如錯誤的時間格式, 英文數字混雜等)，此時也要利用程式做資料淨化以便後續分析 (本文會示範利用簡單的正規表示式 regular expression 做資料過濾與淨化)</li>
-                            <li>資料分析: 爬蟲把 raw data 爬下來之後, 你可能會想要分析資料，例如跑些統計資訊或檢查資料維度間的相關性，驗證你的假設 (本文會示範計算文章內圖片數量與推文數的相關係數)</li>
-                            <li>資料展示: 用圖表、網頁等展示資料 (本文會示範將 PTT Beauty 版文章內的圖片存到本機端，並畫出文章內圖片數量與推文數的分佈圖)</li>
-                        </ol>
-                        <br/><br/>
-                        <h3>範例程式: PTT Beauty 板今日圖片下載器</h3>
-                        <p>本文會教你實作一個簡單的圖片下載器，它會連上 PTT Web 版的表特板首頁，然後把今天所有文章內含的圖片下載到本機端，同時儲存各文章的標題、推文數、內含圖片數，以便後續資料分析。我們會計算圖片數與推文數的相關係數(是否張貼越多圖片的文章會得到越多推？)，並畫出資料分布圖。在過程中你會學到如何用 Python 連線到網站，如何解構網頁文件並擷取、儲存資料，以及資料分析與展示的基本技巧。範例成果如下：</p>
-                        
-                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161219-python-ds-tutorial-1-1.png">
+                        <h2 class="title">給初學者的 Python 網頁爬蟲與資料分析 (2) 套件安裝與啟動網頁爬蟲</h2>
+                        <h3>PTT Beauty 板今日圖片下載器</h3>
+                        <p>PTT Beauty 板今日圖片下載器，會把表特板今天所有文章的圖片下載到本機端，同時儲存一些文章資訊。本系列文章藉由會實作這個範例，說明 Python 網頁爬蟲與資料分析的入門技巧。
+                        <br/>
+                        <h3>套件安裝</h3>
+                        <p>首先請確定你的電腦已經安裝 Python 3 以及 pip (本文使用的環境是 Python 3.5.2 與 pip 9.0.1)</p>
+                        <script src="https://gist.github.com/behappycc/e4ea3f19dea3b11e4ecd231d8b02909d.js"></script>
+                        <br/>
+                        <p>接著安裝所需套件，你可以依照 `requirement.txt` 中所列的套件一一安裝，也可以一次全部安裝</p>
+                        <script src="https://gist.github.com/behappycc/db8a0b26051d4fcf3014632b32c2f6d2.js"></script>
+                        <p>接著在命令列輸入以下指令，若沒有任何訊息出現則代表套件安裝成功</p>
+                        <script src="https://gist.github.com/behappycc/430f7e693b78d359a8853468e56dbf5d.js"></script>
+                        <br/>
+                        <h3>與網站 Server 溝通並取得網頁資料</h3>
+                        <p>PTT Web 版 Beauty 板首頁 https://www.ptt.cc/bbs/Beauty/index.html 在瀏覽器看起來是這樣的</p>
+                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161220-python-ds-tutorial-2-1.png">
                         <br/>
 
-                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161219-python-ds-tutorial-1-2.png">
-                        <br/>
-
-                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161219-python-ds-tutorial-1-3.png">
-                        <br/>
-                        
-                        <script src="https://gist.github.com/behappycc/6d74e34d40436880eff540afca801c4e.js"></script>
-
-                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161219-python-ds-tutorial-1-4.png">
-                        <br/>
-                        <p>
-                            網頁爬蟲與資料分析可以分成以下步驟, 1. 資料來源, 2. 啟動爬蟲, 3. 資料擷取與資料淨化, 4. 資料分析, 5. 資料展示
+                        <p>要透過 Python 取得該頁資料，我們使用 <mark>requests</mark> 套件的 <mark>requests.get()</mark> 方法, 首先定義 <mark>get_web_page()</mark>函式
                         </p>
+                        <script src="https://gist.github.com/behappycc/ae8e3a093e470974b160bf7f6d0f6cf1.js"></script>
+
+                        <p><mark>requests.get()</mark> 需要提供網址作為引數, 而 <mark>cookies={'over18': '1'}</mark> 是 PTT 網站有些板會詢問你是否已滿 18 歲, 因此將回答先存在 cookie 中一併傳給 server. <mark>requests.get()</mark> 的結果是 <mark>request.Response</mark> 物件, 我們可以先透過該物件的 <mark>statu_code</mark> 屬性取得 server 回覆的狀態碼 (例如 200 表示正常, 404 表示找不到網頁等), 若狀態碼為 200, 代表正常回應, 再透過 <mark>text</mark>屬性取得 server 回覆的網頁內容. 若狀態碼異常則回覆 None.</p>
+                        <p>定義好 <mark>get_web_page()</mark> 函式之後, 就能呼叫它來取得網頁內容:</p>
+
+                        <script src="https://gist.github.com/behappycc/9bf092cf87e403cfb5e8c8d17afdfabc.js"></script>
+
+                        <p>結果為</p>
+                        <script src="https://gist.github.com/behappycc/27cb40965a8eb463c9842c3cdf252f28.js"></script>
+
+                        <p>回傳的內容的確是瀏覽器所看到的內容，而且以第一篇貼文為例，我們可以看到它包含了推文數、文章連結、文章標題、貼文日期等我們所需要的資訊。下一篇文章會說明如何使用 BeautifulSoup 套件解構網頁內容，將資料取出。</p>
+
+                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161220-python-ds-tutorial-2-2.png">
+                        <br/>
+
                         <blockquote>
                             <p>
                                 “Happy coding.”
                             </p>
                             <p>
-                                文章也同步刊登在<a href="http://blog.castman.net/%E6%95%99%E5%AD%B8/2016/12/19/python-data-science-tutorial-1.html"> Jun-Wei Lin blogs</a>
+                                文章也同步刊登在<a href="http://blog.castman.net/%E6%95%99%E5%AD%B8/2016/12/20/python-data-science-tutorial-2.html"> Jun-Wei Lin blogs</a>
                             </p>
-                        </blockquote>                    
-                    </div>         
+                        </blockquote>        
                 </div>
             </div>
 
