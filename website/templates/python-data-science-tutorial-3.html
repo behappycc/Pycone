@@ -27,6 +27,11 @@
     <link href="../static/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../static/css/material-kit.css" rel="stylesheet"/>
 
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 </head>
 
 <body class="blog-post">
@@ -93,12 +98,12 @@
                             本節<a href="https://gist.github.com/jwlin/b8d7819cf538697ac91e715e9260f566"> beautifulsoup 範例程式</a>, <a href="https://gist.github.com/jwlin/05cc0bac694784807c714eaaa25b1212"> Beauty 板爬蟲範例程式</a>
                         </p>
                         <h3>網頁 = 由標籤 (tag) 所組成的階層式文件</h3>
-                        <p>你在瀏覽器看到的美觀網頁，主要由三個部分構成: HTML (網頁的骨架結構)、CSS (網頁的樣式) 與 JavaScript (在瀏覽器端執行，負責與使用者互動的程式功能)。對於網頁或爬蟲的初學者來說，最重要的觀念是了解：**網頁就是由各式標籤 (tag) 所組成的階層式文件，要取得所需的網頁區塊資料，只要用 tag 與相關屬性去定位資料所在位置即可**。例如以下是一個簡單的網頁及其原始碼：
-                        <br/>
+                        <p>你在瀏覽器看到的美觀網頁，主要由三個部分構成: HTML (網頁的骨架結構)、CSS (網頁的樣式) 與 JavaScript (在瀏覽器端執行，負責與使用者互動的程式功能)。對於網頁或爬蟲的初學者來說，最重要的觀念是了解：網頁就是由各式標籤 (tag) 所組成的階層式文件，要取得所需的網頁區塊資料，只要用 tag 與相關屬性去定位資料所在位置即可。例如以下是一個簡單的網頁及其原始碼：
+                        <br/><br/>
                         <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161222-python-ds-tutorial-3-1.png">
                         <br/>
                         <script src="https://gist.github.com/behappycc/f55b7993510f5fda98fae247ae46114b.js"></script>
-                        <p>HTML 文件內不同的標籤 (例如 \<title\>, \<h1\>, \<p\>, \<a\> 有著不同的語義，表示建構網頁用的不同元件，且標籤可以有各種屬性 (例如 id, class, style 等通用屬性, 或 href 等專屬屬性)，因此我們可以用標籤 + 屬性去定位資料所在的區塊並取得資料。關於網頁架構還有另外一件事，就是它是階層式文件，例如以上的網頁架構可以如下表示</p>
+                        <p>HTML 文件內不同的標籤 (例如 &lt;title&gt;, &lt;h1&gt;, &lt;p&gt;, &lt;a&gt; 有著不同的語義，表示建構網頁用的不同元件，且標籤可以有各種屬性 (例如 id, class, style 等通用屬性, 或 href 等專屬屬性)，因此我們可以用標籤 + 屬性去定位資料所在的區塊並取得資料。關於網頁架構還有另外一件事，就是它是階層式文件，例如以上的網頁架構可以如下表示</p>
                         <br/>
                         <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161222-python-ds-tutorial-3-2.png">
                         <br/>
@@ -131,45 +136,15 @@
                         <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161222-python-ds-tutorial-3-5.png">
                         <br/>
                         <h3>PTT Beauty 板範例實戰</h3>
-                        <p>檢視網頁原始碼後我們知道，網頁上的每一篇貼文都是由 \<div class="r-ent"\> 的區塊包圍起來，裡面分別由 \<div class="nrec"\> 區塊顯示推文數，\<div class="title"\> 區塊及 \<a\> 區塊顯示文章連結及文章標題，\<div class="date"\> 區塊顯示發文日期</p>
+                        <p>檢視網頁原始碼後我們知道，網頁上的每一篇貼文都是由 &lt;div class="r-ent"&gt; 的區塊包圍起來，裡面分別由 &lt;div class="nrec"&gt; 區塊顯示推文數，&lt;div class="title"&gt; 區塊及 &lt;a&gt; 區塊顯示文章連結及文章標題，&lt;div class="date"&gt; 區塊顯示發文日期</p>
                         <br/>
                         <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161220-python-ds-tutorial-2-2.png">
                         <br/>
-                        <p>因此，若已經取得網頁文件，我們可以用 <mark>find_all()</mark> 找出所有\<div class="r-ent"\> 區塊，並逐一巡訪，取得資料：</p>
+                        <p>因此，若已經取得網頁文件，我們可以用 <mark>find_all()</mark> 找出所有&lt;div class="r-ent"&gt; 區塊，並逐一巡訪，取得資料：</p>
                         <script src="https://gist.github.com/behappycc/88a1a70bf1946e6067e07f258006db91.js"></script>
                         <p>使用 <mark>get_articles()</mark> 及上一篇教學的 <mark>get_web_page()</mark>，取得今日文章資訊</p>
                         <script src="https://gist.github.com/behappycc/142109753eecebba21d4b899c8ca8ed9.js"></script>
-                        <p>這樣就取得今天全部的 Beauty 板文章了嗎？聰明的你一定想到了：如果不只首頁，前一頁還有今天的文章怎麼辦？這就留給各位自行練習了 (提示：找到前一頁的連結，連線並取得該頁資料後，一樣用 `get_articles` 爬取文章資料)，我們會在教學結束後的範例提供完整程式碼。下一篇文章會說明如何連結到 current_articles 內的文章，抓圖並計算每一篇文章的貼圖數。</p>
-
-                        <script src="https://gist.github.com/behappycc/e4ea3f19dea3b11e4ecd231d8b02909d.js"></script>
-                        <br/>
-                        <p>接著安裝所需套件，你可以依照 `requirement.txt` 中所列的套件一一安裝，也可以一次全部安裝</p>
-                        <script src="https://gist.github.com/behappycc/db8a0b26051d4fcf3014632b32c2f6d2.js"></script>
-                        <p>接著在命令列輸入以下指令，若沒有任何訊息出現則代表套件安裝成功</p>
-                        <script src="https://gist.github.com/behappycc/430f7e693b78d359a8853468e56dbf5d.js"></script>
-                        <br/>
-                        <h3>與網站 Server 溝通並取得網頁資料</h3>
-                        <p>PTT Web 版 Beauty 板首頁 https://www.ptt.cc/bbs/Beauty/index.html 在瀏覽器看起來是這樣的</p>
-                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161220-python-ds-tutorial-2-1.png">
-                        <br/>
-
-                        <p>要透過 Python 取得該頁資料，我們使用 <mark>requests</mark> 套件的 <mark>requests.get()</mark> 方法, 首先定義 <mark>get_web_page()</mark>函式
-                        </p>
-                        <script src="https://gist.github.com/behappycc/ae8e3a093e470974b160bf7f6d0f6cf1.js"></script>
-
-                        <p><mark>requests.get()</mark> 需要提供網址作為引數, 而 <mark>cookies={'over18': '1'}</mark> 是 PTT 網站有些板會詢問你是否已滿 18 歲, 因此將回答先存在 cookie 中一併傳給 server. <mark>requests.get()</mark> 的結果是 <mark>request.Response</mark> 物件, 我們可以先透過該物件的 <mark>statu_code</mark> 屬性取得 server 回覆的狀態碼 (例如 200 表示正常, 404 表示找不到網頁等), 若狀態碼為 200, 代表正常回應, 再透過 <mark>text</mark>屬性取得 server 回覆的網頁內容. 若狀態碼異常則回覆 None.</p>
-                        <p>定義好 <mark>get_web_page()</mark> 函式之後, 就能呼叫它來取得網頁內容:</p>
-
-                        <script src="https://gist.github.com/behappycc/9bf092cf87e403cfb5e8c8d17afdfabc.js"></script>
-
-                        <p>結果為</p>
-                        <script src="https://gist.github.com/behappycc/27cb40965a8eb463c9842c3cdf252f28.js"></script>
-
-                        <p>回傳的內容的確是瀏覽器所看到的內容，而且以第一篇貼文為例，我們可以看到它包含了推文數、文章連結、文章標題、貼文日期等我們所需要的資訊。下一篇文章會說明如何使用 BeautifulSoup 套件解構網頁內容，將資料取出。</p>
-
-                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161220-python-ds-tutorial-2-2.png">
-                        <br/>
-
+                        <p>這樣就取得今天全部的 Beauty 板文章了嗎？聰明的你一定想到了：如果不只首頁，前一頁還有今天的文章怎麼辦？這就留給各位自行練習了 (提示：找到前一頁的連結，連線並取得該頁資料後，一樣用 <mark>get_articles</mark> 爬取文章資料)，我們會在教學結束後的範例提供完整程式碼。下一篇文章會說明如何連結到 current_articles 內的文章，抓圖並計算每一篇文章的貼圖數。</p>
                         <blockquote>
                             <p>
                                 “Happy coding.”
@@ -218,6 +193,26 @@
                     <h2 class="title text-center">其他文章</h2>
                     <br />
                     <div class="row">
+                    <div class="col-md-4">
+                            <div class="card card-blog">
+                                <div class="card-image">
+                                    <a href="#pablo">
+                                        <img class="img img-raised" src="../static/images/python_crawler.png" />
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h6 class="category text-muted">
+                                        資料科學
+                                    </h6>
+                                    <h4 class="card-title">
+                                        <a href="#pablo">給初學者的 Python 網頁爬蟲與資料分析</a>
+                                    </h4>
+                                    <p class="card-description">
+                                         (2) 套件安裝與啟動網頁爬蟲<a href="/blogs/python-data-science-tutorial-2"> <br/>Read More </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     <!--
                         <div class="col-md-4">
                             <div class="card card-blog">
