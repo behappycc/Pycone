@@ -93,64 +93,54 @@
             <div class="section section-text">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h2 class="title">給初學者的 Python 網頁爬蟲與資料分析 (3) 解構並擷取網頁資料</h2>
+                        <h2 class="title">給初學者的 Python 網頁爬蟲與資料分析 (5) 資料分析及展示</h2>
                         <p>
-                            本節<a href="https://gist.github.com/jwlin/b8d7819cf538697ac91e715e9260f566"> beautifulsoup 範例程式</a>, <a href="https://gist.github.com/jwlin/05cc0bac694784807c714eaaa25b1212"> Beauty 板爬蟲範例程式</a>
+                            <a href="https://gist.github.com/jwlin/a52feae3d1d9d4032bdaf412ff0488eb"> 本文範例程式</a>, <a href="https://gist.github.com/jwlin/64921301cdc9d6084cf800b1e00dfcf3"> example.json</a>
                         </p>
-                        <h3>網頁 = 由標籤 (tag) 所組成的階層式文件</h3>
-                        <p>你在瀏覽器看到的美觀網頁，主要由三個部分構成: HTML (網頁的骨架結構)、CSS (網頁的樣式) 與 JavaScript (在瀏覽器端執行，負責與使用者互動的程式功能)。對於網頁或爬蟲的初學者來說，最重要的觀念是了解：網頁就是由各式標籤 (tag) 所組成的階層式文件，要取得所需的網頁區塊資料，只要用 tag 與相關屬性去定位資料所在位置即可。例如以下是一個簡單的網頁及其原始碼：
-                        <br/><br/>
-                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161222-python-ds-tutorial-3-1.png">
+                        <p>這篇文章會示範簡單的統計分析 (平均值與相關係數) 與資料視覺化 (histogram 與 scatter plot)，最後會淺談資料科學的三個面向作為本系列文章總結。</p>
+                        <p>藉由之前的範例程式，我們已經有了今天 PTT Beauty 板所有貼文的一些資訊。假設我們想進一步認識或分析手上的數據，或對資料維度的相關性作些假設，就需要統計分析與視覺化的幫助。例如我們對貼圖數與推文數有興趣，且假設「文章內有越多貼圖會得到越多推」，第一步先將資料從 example.json 讀入之後，馬上就能得知它們的極值：</p>
+                        <script src="https://gist.github.com/behappycc/44112d74a2ed9c69491ca2e101cc0f83.js"></script>
+                        <h3>平均值與相關係數</h3>
+                        <p>有了原始資料的 list, 平均值的計算也很容易，</p>
+                        <p></p>
+                        <script src="https://gist.github.com/behappycc/2b7be0b745c6c33147ee05fe8e8f5245.js"></script>
+                        <p>接著我們想知道是否「文章內有越多貼圖會得到越多推」，一個方式是計算相關係數，相關係數是共變異數 (covariance) 除以標準差 (standard deviation) 的乘積，公式可參考<a href="https://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient#For_a_population"> 此處</a>。因此，除了平均值之外，我們還需要計算偏差值 (deviation), 變異數 (variance) 與內積 (dot) 的函式</p>
+                        <script src="https://gist.github.com/behappycc/2e6769b668ba60aa11409a4bbf15106f.js"></script>
+                        <p>有了相關函式後，相關係數可依公式計算</p>
+                        <script src="https://gist.github.com/behappycc/059f3dd25baac370d5ea3badb7b68d2d.js"></script>
+                        <p>相關係數是 -1 到 1 之間的值，越接近 1 代表兩個維度越接近線性正相關，反之則為線性負相關。這個例子中的 0.5258 代表一定程度的正相關，看到這邊你一定有疑問：推文數怎麼可能被貼圖數決定？難道我貼一堆海綿寶寶圖也會被推爆嗎？當然不可能，而這個例子也引出了你可能聽過的說法：<mark>相關不代表因果 (correlation is not causation)</mark>。事實上，我們解讀相關係數時必須多方考慮，如果 x 與 y 高度正相關，可能代表：</p>
+                        <ul>
+                            <li>x 導致 y</li>
+                            <li>y 導致 x</li>
+                            <li>x, y 互為因果</li>
+                            <li>另有他因 z 導致 x, y (例如高 GDP 同時導致高平均壽命與高基礎網路頻寬，平均壽命與基礎網路頻寬並沒有因果關係)</li>
+                            <li>x, y 根本無關，只是巧合 (例如一個地區的手機銷售量與律師人數?)</li>
+                        </ul>
+                        <h2>資料視覺化</h2>
+                        <p>除了直接計算統計數據，將資料視覺化也是幫助我們認識資料的好辦法，例如我想知道推文數的分布，可以試著畫出 histogram, 把小於 10 推, 20 推, 30 推的文章數量以條狀圖顯示</p>
+                        <script src="https://gist.github.com/behappycc/1ca810370eb8e8c33a39a0b0aacf7d32.js"></script>
+                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161231-python-ds-tutorial-5-1.png">
                         <br/>
-                        <script src="https://gist.github.com/behappycc/f55b7993510f5fda98fae247ae46114b.js"></script>
-                        <p>HTML 文件內不同的標籤 (例如 &lt;title&gt;, &lt;h1&gt;, &lt;p&gt;, &lt;a&gt; 有著不同的語義，表示建構網頁用的不同元件，且標籤可以有各種屬性 (例如 id, class, style 等通用屬性, 或 href 等專屬屬性)，因此我們可以用標籤 + 屬性去定位資料所在的區塊並取得資料。關於網頁架構還有另外一件事，就是它是階層式文件，例如以上的網頁架構可以如下表示</p>
+                        <p>另外，也可以考慮直接畫出資料的散佈圖 (scatter plot)，觀察相關性</p>
+                        <script src="https://gist.github.com/behappycc/3f790061a26175a8c7092872cbdec491.js"></script>
+                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161231-python-ds-tutorial-5-2.png">
                         <br/>
-                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161222-python-ds-tutorial-3-2.png">
-                        <br/>
-                        <p>雖然在我們的範例中不會用階層結構去定位資料區塊，但知道這件事有助於你閱讀及理解網頁文件。</p>
-                        <h3>BeautifulSoup 入門</h3>
-                        <p>BeautifulSoup 是好學易用，用來解構並擷取網頁資訊的 Python 函式庫。給定以上的網頁文件，</p>
-                        <script src="https://gist.github.com/behappycc/f55b7993510f5fda98fae247ae46114b.js"></script>
-                        <p>先創建一個 BeautifulSoup 物件，將網頁讀入</p>
-                        <script src="https://gist.github.com/behappycc/5469c6efaf49699a4536d713574b7a62.js"></script>
-                        <p>接著就可以用 <mark>find()</mark>, <mark>find_all()</mark> 搭配 tag 名稱及屬性去定位資料區塊</p>
-                        <script src="https://gist.github.com/behappycc/a3557f09865dc2f4381197baa8145f80.js"></script>
-                        <p><mark>find()</mark> 只回傳第一個找到的區塊，而 <mark>find_all()</mark> 會回傳一個 list, 包含所有符合條件的區塊。傳入的引數第一個通常是 tag 名稱，第二個引數若未指明屬性就代表 class 名稱，也可以直接使用 id 等屬性去定位區塊。定位到區塊後，可以取出其屬性與包含的字串值</p>
-                        <script src="https://gist.github.com/behappycc/e0f0a67967fc33c67be6633e6c8499f1.js"></script>
-                        <p>如果你要取得的屬性不存在，直接使用屬性名稱會出現錯誤訊息，因此若你不確定屬性是否存在，可以改用 <mark>get()</mark> 方法</p>
-                        <script src="https://gist.github.com/behappycc/5dd7d02d3d4016e84066eba17e1ef75e.js"></script>
-                        <p>
-                            其他詳細用法可參考<a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/"> BeautifulSoup 的官方文件</a>
-                        </p>
+                        <p>從 scatter plot 我們可以稍微看出圖片數與推文數的正相關性</p>
+                        <h3>結語：資料科學的三個面向</h3>
+                        <p>從這系列的文章，相信你已經看出所謂的資料科學與資料分析，其實可概分為三個面向：</p>
+                        <ul>
+                            <li>資料處理，寫程式，架系統，對應資料的來源、儲存、處理、查詢等</li>
+                            <li>統計分析，數學，各種機器學習模型與技巧</li>
+                            <li>Domain knowledge，也就是到底要對著資料問什麼問題</li>
+                        </ul>
+                        <p>所以如果你對資料科學有興趣，你可能是對架構系統有興趣(提供乾淨資料)，或對於玩資料有興趣(喜歡統計分析，精通機器學習，或是有足夠的領域知識發掘好問題)，也可以思考以你的背景從哪一塊切入會比較適合。</p>
 
-                        <h3>使用 Chrome 的開發者工具找到資料區塊的 tag 及屬性</h3>
-                        <p>假設你有一個想爬的網頁，要怎麼知道資料區塊所在的標籤及屬性呢？在此我們使用 Chrome 的開發者工具，以 Ptt Web 版 Beauty 板首頁為例，用 Chrome 連上 <a href="https://www.ptt.cc/bbs/Beauty/index.html"> https://www.ptt.cc/bbs/Beauty/index.html</a>, 接著按下 F12 或從選單啟動開發者工具</p>
-                        <br/>
-                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161222-python-ds-tutorial-3-3.png">
-                        <br/>
-                        <p>下方會跑出開發者工具的操作區，點選左上角的箭頭按鈕後，再點擊網頁上你想要定位的資料區塊，該區塊的 HTML 碼就會顯示在下方。當然你也可以直接檢視網頁原始碼或檢視上一篇教學中用 <mark>get_web_page()</mark> 所取得的網頁文件，但善用開發者工具可以加速你的搜尋。</p>
-                        <br/>
-                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161222-python-ds-tutorial-3-4.png">
-                        <br/>
-                        <br/>
-                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161222-python-ds-tutorial-3-5.png">
-                        <br/>
-                        <h3>PTT Beauty 板範例實戰</h3>
-                        <p>檢視網頁原始碼後我們知道，網頁上的每一篇貼文都是由 &lt;div class="r-ent"&gt; 的區塊包圍起來，裡面分別由 &lt;div class="nrec"&gt; 區塊顯示推文數，&lt;div class="title"&gt; 區塊及 &lt;a&gt; 區塊顯示文章連結及文章標題，&lt;div class="date"&gt; 區塊顯示發文日期</p>
-                        <br/>
-                        <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../static/images/blogs/python-data-science-tutorial/161220-python-ds-tutorial-2-2.png">
-                        <br/>
-                        <p>因此，若已經取得網頁文件，我們可以用 <mark>find_all()</mark> 找出所有&lt;div class="r-ent"&gt; 區塊，並逐一巡訪，取得資料：</p>
-                        <script src="https://gist.github.com/behappycc/88a1a70bf1946e6067e07f258006db91.js"></script>
-                        <p>使用 <mark>get_articles()</mark> 及上一篇教學的 <mark>get_web_page()</mark>，取得今日文章資訊</p>
-                        <script src="https://gist.github.com/behappycc/142109753eecebba21d4b899c8ca8ed9.js"></script>
-                        <p>這樣就取得今天全部的 Beauty 板文章了嗎？聰明的你一定想到了：如果不只首頁，前一頁還有今天的文章怎麼辦？這就留給各位自行練習了 (提示：找到前一頁的連結，連線並取得該頁資料後，一樣用 <mark>get_articles</mark> 爬取文章資料)，我們會在教學結束後的範例提供完整程式碼。下一篇文章會說明如何連結到 current_articles 內的文章，抓圖並計算每一篇文章的貼圖數。</p>
                         <blockquote>
                             <p>
                                 “Happy coding.”
                             </p>
                             <p>
-                                文章也同步刊登在<a href="http://blog.castman.net/%E6%95%99%E5%AD%B8/2016/12/22/python-data-science-tutorial-3.html"> Jun-Wei Lin blogs</a>
+                                文章也同步刊登在<a href="http://blog.castman.net/%E6%95%99%E5%AD%B8/2016/12/22/python-data-science-tutorial-5.html"> Jun-Wei Lin blogs</a>
                             </p>
                         </blockquote>        
                 </div>
@@ -208,7 +198,7 @@
                                         <a href="#pablo">給初學者的 Python 網頁爬蟲與資料分析</a>
                                     </h4>
                                     <p class="card-description">
-                                         (2) 套件安裝與啟動網頁爬蟲<a href="/blogs/python-data-science-tutorial-2"> <br/>Read More </a>
+                                         (4) 擷取資料及下載圖片<a href="/blogs/python-data-science-tutorial-4"> <br/>Read More </a>
                                     </p>
                                 </div>
                             </div>
