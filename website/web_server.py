@@ -135,6 +135,18 @@ class PythonDataScienceTutorial5Handler(Resource):
         return make_response(render_template('python-data-science-tutorial-5.html'), 200, headers)
 
 
+class PythonDataScienceTutorial4Handler(Resource):
+    def get(self):
+        headers = {'Content-Type': 'text/html'}
+        return make_response(render_template('python-data-science-tutorial-4.html'), 200, headers)
+
+
+class PythonDataScienceTutorial5Handler(Resource):
+    def get(self):
+        headers = {'Content-Type': 'text/html'}
+        return make_response(render_template('python-data-science-tutorial-5.html'), 200, headers)
+
+
 class SearchConsoleHandler(Resource):
     def get(self):
         headers = {'Content-Type': 'text/html'}
