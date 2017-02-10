@@ -29,6 +29,7 @@ def main():
         app.run(port=port, debug=True)
 
 
+
 class IndexHandler(Resource):
     def get(self):
         headers = {'Content-Type': 'text/html'}
@@ -52,7 +53,7 @@ class IndexHandler(Resource):
             file.write('----------' + '\n')
 
         response_to_send = {}
-        response_to_send['response'] = "謝謝您的來信!"
+        response_to_send['response'] = "Thank you"
         print(response_to_send)
         return json.dumps(response_to_send)
 
