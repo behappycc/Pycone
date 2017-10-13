@@ -13,13 +13,12 @@ const coverStyle = {
   margin: "-10px",
   width: "100%",
   height: (innerHeight - 64) + 'px',
-  border: "0px",
   backgroundImage: "url(" + Background + ")",
   display: "table",
   position: "relative",
   WebkitBackgroundSize: "cover",
   MozBackgroundSize: "cover",
-  backgroundSize: "cover",
+  backgroundSize: "100% 100%",
   OBackgroundSize: "cover",
 };
 
@@ -40,6 +39,19 @@ const fontStyle2 = {
   color: "white",
   fontSize: "30px",
   textAlign: "center",
+}
+
+const fontStyle3 = {
+  color: "black",
+  fontSize: "30px",
+  textAlign: "center",
+}
+
+const hrStyle = {
+  textAlign: "center",
+  width: "80px",
+  height: "3px",
+  backgroundColor: "#108ee9"
 }
 
 const courseSectionStyle = {
@@ -94,9 +106,11 @@ class IndexMain extends React.Component {
         </section>
 
         <section style={courseSectionStyle}>
-          
+          <h1 style={fontStyle3}>Python線上課程</h1>
+          {/*<h4 style={fontStyle3}>一起來學習Python吧!</h4>*/}
+          <hr style={hrStyle}/>
           <Row type="flex" justify="center" gutter={16}>
-          <Col span={8}>
+          <Col xs={24} sm={24} md={24} lg={8} xl={8}>
             <a href="https://hahow.in/cr/python-for-beginners">     
               <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
                 <div style={customImageStyle}>
@@ -110,7 +124,7 @@ class IndexMain extends React.Component {
               </Card>            
             </a> 
             </Col>
-            <Col span={8}>      
+            <Col xs={24} sm={24} md={24} lg={8} xl={8}>      
               <a href="https://hahow.in/cr/python-web-crawler">             
                 <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
                   <div style={customImageStyle}>
@@ -123,7 +137,7 @@ class IndexMain extends React.Component {
                 </Card>
               </a>
             </Col>
-            <Col span={8}>
+            <Col xs={24} sm={24} md={24} lg={8} xl={8}>
               <a href="https://hahow.in/cr/pydataml">
                 <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
                   <div style={customImageStyle}>
@@ -208,6 +222,16 @@ Kaggle是全世界最大的資料科學家的社群，上面有許多企業舉�
             </Col>
           </Row>
         </section>
+
+        <section style={courseSectionStyle}>
+          <h1 style={fontStyle3}>contact us</h1>
+          <h4 style={fontStyle3}>一起來學習Python吧!</h4>
+          <hr style={hrStyle}/>
+          <p>mail:
+            <a href="mailto:behappycc@hotmail.com?Subject=Hello%20pycone" target="_top">send mail</a>
+          </p>
+        </section>
+
       </div>
     )
   }
