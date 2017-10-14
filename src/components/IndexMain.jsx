@@ -2,6 +2,7 @@ import React from 'react';
 import * as actionCreators from '../actions'
 import {connect} from 'react-redux'
 import {Link} from "react-router-dom"
+import Responsive from 'react-responsive'
 import _ from 'lodash'
 import {Button, Row, Col, Card, Table, Steps, Icon} from 'antd'
 
@@ -65,7 +66,7 @@ const hrStyle = {
 
 const sectionStyle1 = {
   margin: "30px",
-  padding: "30px"
+  padding: "30px",
 }
 
 const sectionStyle2 = {
@@ -95,7 +96,10 @@ const customCardPStyle = {
   color: '#999'
 }
 
-
+const Desktop = ({children}) => <Responsive minWidth={992} children={children}/>;
+const Tablet = ({children}) => <Responsive minWidth={768} maxWidth={992} children={children}/>;
+const Mobile = ({children}) => <Responsive maxWidth={768} children={children}/>;
+const Default = ({children}) => <Responsive minWidth={768} children={children}/>;
 
 class IndexMain extends React.Component {
   constructor(props) {
@@ -147,7 +151,7 @@ class IndexMain extends React.Component {
              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <div style={sectionTextStyle}>
                 <h1>Pycone松果城市</h1>
-                <h3>啟動啟業的商業價值</h3>
+                <h3>啟動企業的商業價值</h3>
                 {/*<hr style={hrStyle}/>*/}
               </div>
             </Col>
@@ -216,8 +220,8 @@ class IndexMain extends React.Component {
               </div>
             </Col>
           </Row>
-          <Row type="flex" justify="center" gutter={16}>
-          <Col xs={24} sm={24} md={24} lg={8} xl={8}>
+          <Row type="flex">
+          <Col offset={2} xs={22} sm={22} md={22} lg={6} xl={6}>
             <a href="https://hahow.in/cr/python-for-beginners">     
               <Card style={cardStyle} bodyStyle={{ padding: 0 }}>
                 <div style={customImageStyle}>
@@ -231,7 +235,7 @@ class IndexMain extends React.Component {
               </Card>            
             </a> 
             </Col>
-            <Col xs={24} sm={24} md={24} lg={8} xl={8}>      
+            <Col offset={2} xs={22} sm={22} md={22} lg={6} xl={6}>      
               <a href="https://hahow.in/cr/python-web-crawler">             
                 <Card style={cardStyle} bodyStyle={{ padding: 0 }}>
                   <div style={customImageStyle}>
@@ -244,7 +248,7 @@ class IndexMain extends React.Component {
                 </Card>
               </a>
             </Col>
-            <Col xs={24} sm={24} md={24} lg={8} xl={8}>
+            <Col offset={2} xs={22} sm={22} md={22} lg={6} xl={6}>
               <a href="https://hahow.in/cr/pydataml">
                 <Card style={cardStyle} bodyStyle={{ padding: 0 }}>
                   <div style={customImageStyle}>
@@ -275,29 +279,53 @@ Kaggle是全世界最大的資料科學家的社群，上面有許多企業舉�
               <div style={sectionTextStyle}>
                 <h1>資料科學家課程</h1>
                 <h3>學習成為資料科學家的技能</h3>
-                {/*<hr style={hrStyle}/>*/}
               </div>
             </Col>
           </Row>
-          <Row type="flex" justify="center">
-            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-              <Steps>
-                <Step status="finish" title="初心者 - python入門" icon={<Icon type="user" />} />      
-                <Step status="finish" title="Python 網頁爬蟲入門實戰" icon={<Icon type="solution" />} />
-                <Step status="finish" title="Python 資料分析＆機器學習入門" icon={<Icon type="credit-card" />} />
-                <Step status="finish" title="資料科學家" icon={<Icon type="smile-o" />} />
-              </Steps>
-            </Col>
+          <Row type="flex">
+            {/*<div>123</div>*/}
+            <Desktop>
+              <Col offset={2} xs={20} sm={20} md={20} lg={20} xl={20}>
+                
+                <Steps>
+                  <Step status="finish" title="初心者 - python入門" icon={<Icon type="user" />} />      
+                  <Step status="finish" title="Python 網頁爬蟲入門實戰" icon={<Icon type="solution" />} />
+                  <Step status="finish" title="Python 資料分析＆機器學習入門" icon={<Icon type="credit-card" />} />
+                  <Step status="finish" title="資料科學家" icon={<Icon type="smile-o" />} />
+                </Steps> 
+              </Col>
+            </Desktop>
+            <Tablet>
+              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                <Steps>
+                  <Step status="finish" title="初心者 - python入門" icon={<Icon type="user" />} />      
+                  <Step status="finish" title="Python 網頁爬蟲入門實戰" icon={<Icon type="solution" />} />
+                  <Step status="finish" title="Python 資料分析＆機器學習入門" icon={<Icon type="credit-card" />} />
+                  <Step status="finish" title="資料科學家" icon={<Icon type="smile-o" />} />
+                </Steps> 
+              </Col>
+            </Tablet>
+            <Mobile>
+              <Col offset={4} xs={22} sm={22} md={22} lg={22} xl={22}>
+                <Steps direction="vertical" current={1}>
+                  <Step status="finish" title="初心者 - python入門" icon={<Icon type="user" />} />      
+                  <Step status="finish" title="Python 網頁爬蟲入門實戰" icon={<Icon type="solution" />} />
+                  <Step status="finish" title="Python 資料分析＆機器學習入門" icon={<Icon type="credit-card" />} />
+                  <Step status="finish" title="資料科學家" icon={<Icon type="smile-o" />} />
+                </Steps>
+              </Col>
+            </Mobile>
+            <Default></Default> 
           </Row>
         </section>
 
-        <section style={sectionStyle1}>
+        {/*<section style={sectionStyle1}>
           <Row type="flex" justify="center">
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               
             </Col>
           </Row>
-        </section>
+        </section>*/}
 
         <section style={sectionStyle1}>
           <Row type="flex">
