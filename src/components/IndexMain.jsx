@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from "react-router-dom"
 import Responsive from 'react-responsive'
 import _ from 'lodash'
-import {Button, Row, Col, Card, Table, Steps, Icon} from 'antd'
+import {Button, Row, Col, Card, Table, Steps, Icon, notification} from 'antd'
 
 
 const Background = "../../static/img/cover.jpg"
@@ -96,6 +96,14 @@ const customCardPStyle = {
   color: '#999'
 }
 
+const openNotification = () => {
+  notification.open({
+    message: 'Pycone松果城市 Email',
+    description: '想要更多嗎?歡迎聯絡我們。pycone2016@gmail.com',
+    icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
+  })
+}
+
 const Desktop = ({children}) => <Responsive minWidth={992} children={children}/>;
 const Tablet = ({children}) => <Responsive minWidth={768} maxWidth={992} children={children}/>;
 const Mobile = ({children}) => <Responsive maxWidth={768} children={children}/>;
@@ -183,7 +191,7 @@ class IndexMain extends React.Component {
               <div style={{padding: "10px"}}>
                 <i className="fa fa-graduation-cap fa-4x" aria-hidden="true"/>
                 <h1>線上程式教學與專案服導</h1>
-                <p>123321123321</p>
+                <p>Python初學者線上課程</p>
               </div>
             </Col>
             <Col offset={2} xs={22} sm={22} md={22} lg={10} xl={10}>
@@ -290,7 +298,7 @@ Kaggle是全世界最大的資料科學家的社群，上面有許多企業舉�
                 <Steps>
                   <Step status="finish" title="初心者 - python入門" icon={<Icon type="user" />} />      
                   <Step status="finish" title="Python 網頁爬蟲入門實戰" icon={<Icon type="solution" />} />
-                  <Step status="finish" title="Python 資料分析＆機器學習入門" icon={<Icon type="credit-card" />} />
+                  <Step status="finish" title="Python 資料分析＆機器學習入門" icon={<Icon type="area-chart" />} />
                   <Step status="finish" title="資料科學家" icon={<Icon type="smile-o" />} />
                 </Steps> 
               </Col>
@@ -300,7 +308,7 @@ Kaggle是全世界最大的資料科學家的社群，上面有許多企業舉�
                 <Steps>
                   <Step status="finish" title="初心者 - python入門" icon={<Icon type="user" />} />      
                   <Step status="finish" title="Python 網頁爬蟲入門實戰" icon={<Icon type="solution" />} />
-                  <Step status="finish" title="Python 資料分析＆機器學習入門" icon={<Icon type="credit-card" />} />
+                  <Step status="finish" title="Python 資料分析＆機器學習入門" icon={<Icon type="area-chart" />} />
                   <Step status="finish" title="資料科學家" icon={<Icon type="smile-o" />} />
                 </Steps> 
               </Col>
@@ -310,7 +318,7 @@ Kaggle是全世界最大的資料科學家的社群，上面有許多企業舉�
                 <Steps direction="vertical" current={1}>
                   <Step status="finish" title="初心者 - python入門" icon={<Icon type="user" />} />      
                   <Step status="finish" title="Python 網頁爬蟲入門實戰" icon={<Icon type="solution" />} />
-                  <Step status="finish" title="Python 資料分析＆機器學習入門" icon={<Icon type="credit-card" />} />
+                  <Step status="finish" title="Python 資料分析＆機器學習入門" icon={<Icon type="area-chart" />} />
                   <Step status="finish" title="資料科學家" icon={<Icon type="smile-o" />} />
                 </Steps>
               </Col>
@@ -338,7 +346,7 @@ Kaggle是全世界最大的資料科學家的社群，上面有許多企業舉�
             </Row>
           <Row type="flex" justify="center"> 
             <Col>
-              <a href="mailto:behappycc@hotmail.com?Subject=Hello%20pycone" target="_top"><Button type="primary" size={"large"} style={{margin:"5px"}}>Email us</Button></a>
+              <a href="mailto:pycone2016@gmail.com?Subject=Hello%20pycone" target="_top"><Button type="primary" size={"large"} style={{margin:"5px"}} onClick={openNotification}>Email us</Button></a>
               <a href="https://www.facebook.com/pycone2016/" target="_blank"><Button size={"large"} type="primary">Facebook</Button></a>
             </Col>
           </Row>   
