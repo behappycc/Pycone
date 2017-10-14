@@ -10,7 +10,7 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="ant-layout-footer" style={footerStyle}>
-        <div style={{color: "white"}}>Design ©2017 Created by Pycone松果城市 </div>
+        <div style={{color: "white"}}>© 2017 Pycone松果城市 </div>
       </div>
     )
   }

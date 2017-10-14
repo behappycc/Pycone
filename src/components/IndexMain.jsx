@@ -3,16 +3,17 @@ import * as actionCreators from '../actions'
 import {connect} from 'react-redux'
 import {Link} from "react-router-dom"
 import _ from 'lodash'
-import {Button, Row, Col, Card, Table} from 'antd'
+import {Button, Row, Col, Card, Table, Steps, Icon} from 'antd'
 
 
 const Background = "../../static/img/cover.jpg"
 const innerHeight = window.innerHeight
 
 const coverStyle = {
-  margin: "-10px",
+  // margin: "-10px",
   width: "100%",
-  height: (innerHeight - 64) + 'px',
+  height: innerHeight + 'px',
+  // height: (innerHeight - 64) + 'px',
   backgroundImage: "url(" + Background + ")",
   display: "table",
   position: "relative",
@@ -26,7 +27,7 @@ const textStyle = {
   color: "white",
   fontSize: "40px",
   textAlign: "center",
-  padding: (innerHeight / 2) - 64
+  paddingTop: (innerHeight / 2) - 64
 }
 
 const fontStyle1 = {
@@ -44,24 +45,42 @@ const fontStyle2 = {
 const fontStyle3 = {
   color: "black",
   fontSize: "30px",
+  margin: "10px",
+  textAlign: "center",
+}
+
+const fontStyle4 = {
+  color: "black",
+  fontSize: "20px",
+  margin: "10px",
   textAlign: "center",
 }
 
 const hrStyle = {
-  textAlign: "center",
-  width: "80px",
+  width:"8px",
+  margin: "5px",
   height: "3px",
   backgroundColor: "#108ee9"
 }
 
-const courseSectionStyle = {
-  margin: "20px",
-  padding: "20px"
-};
+const sectionStyle1 = {
+  margin: "30px",
+  padding: "30px"
+}
 
-const featureSectionStyle = {
-  padding: "30px",
-  backgroundColor: "#fff"
+const sectionStyle2 = {
+  margin: "30px",
+  padding: "0px",
+}
+
+const sectionTextStyle = {
+  textAlign: "center",
+  margin: "30px"
+}
+
+const cardStyle = { 
+  width: "240px",
+  margin: "10px"
 }
 
 const customImageStyle = {
@@ -77,6 +96,7 @@ const customCardPStyle = {
 }
 
 
+
 class IndexMain extends React.Component {
   constructor(props) {
     super(props);
@@ -88,31 +108,118 @@ class IndexMain extends React.Component {
   }
 
   render() {
+    const Step = Steps.Step
     return (
       <div className="ant-layout-content">
         <section style={coverStyle}>
           <div style={textStyle}>
-            <h1 style={fontStyle1}>最有趣的Python線上課程</h1>
-            <h4 style={fontStyle2}>一起來學習Python吧!</h4>
-            <Button type="primary" size={'large'}>
-              <a href="https://hahow.in/cr/pydataml" target="_blank" class="btn btn-info btn-raised btn-lg">
-                <i className="fa fa-rocket"></i> 立即加入課程募資!
-              </a>
-            </Button>
-            
-          </div>
-          
-          
+            <Row type="flex" justify="center">
+              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                <h1 style={fontStyle1}>最有趣的Python線上課程</h1>
+                <h4 style={fontStyle2}>一起來學習Python吧!</h4>
+                <Button type="primary" size={'large'}>
+                  <a href="https://hahow.in/cr/pydataml" target="_blank" className="btn btn-info btn-raised btn-lg">
+                    <i className="fa fa-rocket"></i> 立即加入課程募資!
+                  </a>
+                </Button> 
+              </Col>
+            </Row>      
+          </div>         
+        </section>
+        {/*<section style={coverStyle}>
+          <div style={textStyle}>
+            <Row type="flex" justify="center">
+              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                <h1 style={fontStyle1}>最有趣的Python線上課程</h1>
+                <h4 style={fontStyle2}>一起來學習Python吧!</h4>
+                <Button type="primary" size={'large'}>
+                  <a href="https://hahow.in/cr/pydataml" target="_blank" className="btn btn-info btn-raised btn-lg">
+                    <i className="fa fa-rocket"></i> 立即加入課程募資!
+                  </a>
+                </Button> 
+              </Col>
+            </Row>      
+          </div>         
+        </section>*/}
+
+         <section style={sectionStyle1}>
+           <Row type="flex">
+             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+              <div style={sectionTextStyle}>
+                <h1>Pycone松果城市</h1>
+                <h3>啟動啟業的商業價值</h3>
+                {/*<hr style={hrStyle}/>*/}
+              </div>
+            </Col>
+          </Row>
+          <Row type="flex" justify="center">
+            <Col offset={2} xs={22} sm={22} md={22} lg={8} xl={8}>
+              <div style={{padding: "10px"}}>
+                <h1>打造專屬商業應用，就從Pycone松果城市開始！</h1>
+                <h3>松果城市提供網站開發、APP開發與資料分析，讓我們幫你描繪成功的藍圖</h3>
+              </div>
+            </Col>
+            <Col offset={2} xs={22} sm={22} md={22} lg={12} xl={12}>
+              <div style={{padding: "5px"}}>
+                <img style={{width: "100%"}} src="../../static/img/card-project4.jpg" alt=""/>
+              </div>
+            </Col>
+          </Row>
         </section>
 
-        <section style={courseSectionStyle}>
-          <h1 style={fontStyle3}>Python線上課程</h1>
-          {/*<h4 style={fontStyle3}>一起來學習Python吧!</h4>*/}
-          <hr style={hrStyle}/>
+        <section style={sectionStyle1}>
+          <Row type="flex">
+            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+              <div style={sectionTextStyle}>
+                <h1>產品服務</h1>
+                <h3>提供教學與商業系統客製化服務</h3>
+              </div>
+            </Col>
+            <Col offset={2} xs={22} sm={22} md={22} lg={10} xl={10}>
+              <div style={{padding: "10px"}}>
+                <i className="fa fa-graduation-cap fa-4x" aria-hidden="true"/>
+                <h1>線上程式教學與專案服導</h1>
+                <p>123321123321</p>
+              </div>
+            </Col>
+            <Col offset={2} xs={22} sm={22} md={22} lg={10} xl={10}>
+              <div style={{padding: "10px"}}>
+                <i className="fa fa-desktop fa-4x" aria-hidden="true"/>
+                <h1>網站開發</h1>
+                <p>基本形象網站、RWD網頁、電子商務網站</p>    
+              </div>
+            </Col>
+            <Col offset={2} xs={22} sm={22} md={22} lg={10} xl={10}>
+              <div style={{padding: "10px"}}>
+                <i className="fa fa-mobile fa-4x" aria-hidden="true"/>
+                <h1>行動App開發</h1>
+                <p>Android與iOS行動應用</p>
+              </div>
+            </Col>
+            <Col offset={2} xs={22} sm={22} md={22} lg={10} xl={10}>
+              <div style={{padding: "10px"}}>
+                <i className="fa fa-bar-chart fa-4x" aria-hidden="true"/>
+                <h1>資料分析</h1>
+                <p>數據分析、網路輿情分析</p>
+              </div>
+            </Col>
+          </Row>
+        </section>
+
+        <section style={sectionStyle1}>
+          <Row type="flex">
+             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+              <div style={sectionTextStyle}>
+                <h1>Python線上課程</h1>
+                <h3>最有趣的Python線上課程</h3>
+                {/*<hr style={hrStyle}/>*/}
+              </div>
+            </Col>
+          </Row>
           <Row type="flex" justify="center" gutter={16}>
           <Col xs={24} sm={24} md={24} lg={8} xl={8}>
             <a href="https://hahow.in/cr/python-for-beginners">     
-              <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
+              <Card style={cardStyle} bodyStyle={{ padding: 0 }}>
                 <div style={customImageStyle}>
                   <img style={customImageStyle} alt="example" width="100%" src="../../static/img/python-for-beginners.png" />
                 </div>
@@ -126,7 +233,7 @@ class IndexMain extends React.Component {
             </Col>
             <Col xs={24} sm={24} md={24} lg={8} xl={8}>      
               <a href="https://hahow.in/cr/python-web-crawler">             
-                <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
+                <Card style={cardStyle} bodyStyle={{ padding: 0 }}>
                   <div style={customImageStyle}>
                     <img style={customImageStyle} alt="example" width="100%" src="../../static/img/python-web-crawler.png" />
                   </div>
@@ -139,7 +246,7 @@ class IndexMain extends React.Component {
             </Col>
             <Col xs={24} sm={24} md={24} lg={8} xl={8}>
               <a href="https://hahow.in/cr/pydataml">
-                <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
+                <Card style={cardStyle} bodyStyle={{ padding: 0 }}>
                   <div style={customImageStyle}>
                     <img style={customImageStyle} alt="example" width="100%" src="../../static/img/pydataml.jpg" />
                   </div>
@@ -162,7 +269,29 @@ Kaggle是全世界最大的資料科學家的社群，上面有許多企業舉�
           </Row>
         </section>
 
-        <section style={courseSectionStyle}>
+        <section style={sectionStyle2}>
+          <Row type="flex">
+             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+              <div style={sectionTextStyle}>
+                <h1>資料科學家課程</h1>
+                <h3>學習成為資料科學家的技能</h3>
+                {/*<hr style={hrStyle}/>*/}
+              </div>
+            </Col>
+          </Row>
+          <Row type="flex" justify="center">
+            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+              <Steps>
+                <Step status="finish" title="初心者 - python入門" icon={<Icon type="user" />} />      
+                <Step status="finish" title="Python 網頁爬蟲入門實戰" icon={<Icon type="solution" />} />
+                <Step status="finish" title="Python 資料分析＆機器學習入門" icon={<Icon type="credit-card" />} />
+                <Step status="finish" title="資料科學家" icon={<Icon type="smile-o" />} />
+              </Steps>
+            </Col>
+          </Row>
+        </section>
+
+        <section style={sectionStyle1}>
           <Row type="flex" justify="center">
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               
@@ -170,66 +299,21 @@ Kaggle是全世界最大的資料科學家的社群，上面有許多企業舉�
           </Row>
         </section>
 
-        <section style={featureSectionStyle}>
+        <section style={sectionStyle1}>
           <Row type="flex">
-            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-              <div style={{textAlign: "center"}}>
-                <h1>Pycone FEATURES</h1>
-                <h3>123</h3>
+             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+              <div style={sectionTextStyle}>
+                <h1>聯絡我們</h1>
+                {/*<hr style={hrStyle}/>*/}
               </div>
+              </Col>
+            </Row>
+          <Row type="flex" justify="center"> 
+            <Col>
+              <a href="mailto:behappycc@hotmail.com?Subject=Hello%20pycone" target="_top"><Button type="primary" size={"large"} style={{margin:"5px"}}>Email us</Button></a>
+              <a href="https://www.facebook.com/pycone2016/" target="_blank"><Button size={"large"} type="primary">Facebook</Button></a>
             </Col>
-            <Col offset={2} xs={22} sm={22} md={22} lg={10} xl={10}>
-              <div style={{padding: "10px"}}>
-                <i className="fa fa-github fa-4x" aria-hidden="true"/>
-                <h1>Exchange</h1>
-                <p>123321123321</p>
-              </div>
-            </Col>
-            <Col offset={2} xs={22} sm={22} md={22} lg={10} xl={10}>
-              <div style={{padding: "10px"}}>
-                <i className="fa fa-github fa-4x" aria-hidden="true"/>
-                <h1>Exchange</h1>
-                <p>123321123321</p>
-              </div>
-            </Col>
-            <Col offset={2} xs={22} sm={22} md={22} lg={10} xl={10}>
-              <div style={{padding: "10px"}}>
-                <i className="fa fa-github fa-4x" aria-hidden="true"/>
-                <h1>Exchange</h1>
-                <p>123321123321</p>
-              </div>
-            </Col>
-            <Col offset={2} xs={22} sm={22} md={22} lg={10} xl={10}>
-              <div style={{padding: "10px"}}>
-                <i className="fa fa-github fa-4x" aria-hidden="true"/>
-                <h1>Exchange</h1>
-                <p>123321123321</p>
-              </div>
-            </Col>
-          </Row>
-          <Row type="flex">
-            <Col offset={2} xs={22} sm={22} md={22} lg={8} xl={8}>
-              <div style={{padding: "10px"}}>
-                <h1>123</h1>
-                <h3>123</h3>
-                <div>123</div>
-              </div>
-            </Col>
-            <Col offset={2} xs={22} sm={22} md={22} lg={12} xl={12}>
-              <div style={{padding: "50px"}}>
-                <img style={{width: "100%"}} src="../../static/img/cover.jpg" alt=""/>
-              </div>
-            </Col>
-          </Row>
-        </section>
-
-        <section style={courseSectionStyle}>
-          <h1 style={fontStyle3}>contact us</h1>
-          <h4 style={fontStyle3}>一起來學習Python吧!</h4>
-          <hr style={hrStyle}/>
-          <p>mail:
-            <a href="mailto:behappycc@hotmail.com?Subject=Hello%20pycone" target="_top">send mail</a>
-          </p>
+          </Row>   
         </section>
 
       </div>
