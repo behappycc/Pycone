@@ -14,7 +14,9 @@ const coverStyle = {
   // margin: "-10px",
   width: "100%",
   height: innerHeight + 'px',
+  opacity: 0.9,
   // height: (innerHeight - 64) + 'px',
+  // backgroundColor: 'rgba(0,0,0,0.5)',
   backgroundImage: "url(" + Background + ")",
   display: "table",
   position: "relative",
@@ -190,7 +192,7 @@ class IndexMain extends React.Component {
             <Col offset={2} xs={22} sm={22} md={22} lg={10} xl={10}>
               <div style={{padding: "10px"}}>
                 <i className="fa fa-graduation-cap fa-4x" aria-hidden="true"/>
-                <h1>線上程式教學與專案服導</h1>
+                <h1>線上程式教學與專案輔導</h1>
                 <p>Python初學者線上課程</p>
               </div>
             </Col>
@@ -352,6 +354,16 @@ Kaggle是全世界最大的資料科學家的社群，上面有許多企業舉�
           </Row>   
         </section>
 
+        <section style={sectionStyle1}>
+          <Row type="flex">
+             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+              <div style={sectionTextStyle}>
+                <h1>分享給朋友</h1>
+                <div class="addthis_inline_share_toolbox"></div>
+              </div>
+              </Col>
+            </Row>
+        </section>
       </div>
     )
   }
